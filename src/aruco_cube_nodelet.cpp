@@ -14,7 +14,7 @@
  *     copyright notice, this list of conditions and the following
  *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
- *   * Neither the name of the copyright holder nor the names of its 
+ *   * Neither the name of the copyright holder nor the names of its
  *     contributors may be used to endorse or promote products derived
  *     from this software without specific prior written permission.
  *
@@ -37,7 +37,7 @@
 #include <pluginlib/class_list_macros.h>
 #include <aruco_cube_ros/aruco_cube_nodelet.h>
 
-namespace aruco_cube
+namespace aruco_cube_ros
 {
 
 ArucoCubeNodelet::ArucoCubeNodelet():
@@ -159,7 +159,7 @@ void ArucoCubeNodelet::infoCB(const sensor_msgs::CameraInfoConstPtr& info_msg)
 }
 
 
-bool ArucoCubeNodelet::arucoServiceCB(aruco_cube::GetPoseRequest &req, aruco_cube::GetPoseResponse &res)
+bool ArucoCubeNodelet::arucoServiceCB(aruco_cube_ros::GetPoseRequest &req, aruco_cube_ros::GetPoseResponse &res)
 {
   res.success = false;
 
@@ -583,7 +583,7 @@ void ArucoCubeNodelet::getBoardObjectAndImagePoints(const cv::Ptr<cv::aruco::Boa
     cv::Mat(imgPnts).copyTo(imgPoints);
 }
 
-void ArucoCubeNodelet::updateDynamicReconfigure(aruco_cube::ArucoCubeConfig config)
+void ArucoCubeNodelet::updateDynamicReconfigure(aruco_cube_ros::ArucoCubeConfig config)
 {
   if (!dynamic_reconfigure_initialized_)
   {
@@ -599,7 +599,7 @@ void ArucoCubeNodelet::updateDynamicReconfigure(aruco_cube::ArucoCubeConfig conf
 
 void ArucoCubeNodelet::initDynamicReconfigure(ros::NodeHandle& n)
 {
-  dsrv_.reset(new dynamic_reconfigure::Server<aruco_cube::ArucoCubeConfig>(param_reconfigure_mutex_, n));
+  dsrv_.reset(new dynamic_reconfigure::Server<aruco_cube_ros::ArucoCubeConfig>(param_reconfigure_mutex_, n));
   dynamic_reconfigure_initialized_ = true;
 
   updateDynamicReconfigure(config_);
@@ -609,7 +609,7 @@ void ArucoCubeNodelet::initDynamicReconfigure(ros::NodeHandle& n)
 }
 
 
-void ArucoCubeNodelet::reconfigureCB(aruco_cube::ArucoCubeConfig& config, uint32_t level)
+void ArucoCubeNodelet::reconfigureCB(aruco_cube_ros::ArucoCubeConfig& config, uint32_t level)
 {
   updateDynamicReconfigure(config);
 }
@@ -617,4 +617,4 @@ void ArucoCubeNodelet::reconfigureCB(aruco_cube::ArucoCubeConfig& config, uint32
 }//namespace
 
 
-PLUGINLIB_EXPORT_CLASS(aruco_cube::ArucoCubeNodelet, nodelet::Nodelet);
+PLUGINLIB_EXPORT_CLASS(aruco_cube_ros::ArucoCubeNodelet, nodelet::Nodelet);

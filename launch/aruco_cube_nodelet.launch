@@ -6,13 +6,13 @@
     <arg name="manager_name"       value="aruco_manager" />
 
     <!-- Load aruco_cube parameters-->
-    <rosparam file="$(find aruco_cube)/config/aruco_cube_params.yaml" ns="aruco_cube" command="load"/>
+    <rosparam file="$(find aruco_cube_ros)/config/aruco_cube_params.yaml" ns="aruco_cube" command="load"/>
 
     <!-- Launch nodelet manager -->
     <node name="$(arg manager_name)" pkg="nodelet" type="nodelet" args="manager"  output="screen"/>
 
     <!-- <load aruco_cube nodlet -->
-    <node name="aruco_cube" pkg="nodelet" type="nodelet" args="load aruco_cube/ArucoCubeNodelet $(arg manager_name)" output="screen"/>
+    <node name="aruco_cube" pkg="nodelet" type="nodelet" args="load aruco_cube_ros/ArucoCubeNodelet $(arg manager_name)" output="screen"/>
 
   </group>
 

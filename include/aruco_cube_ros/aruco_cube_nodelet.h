@@ -14,7 +14,7 @@
  *     copyright notice, this list of conditions and the following
  *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
- *   * Neither the name of the copyright holder nor the names of its 
+ *   * Neither the name of the copyright holder nor the names of its
  *     contributors may be used to endorse or promote products derived
  *     from this software without specific prior written permission.
  *
@@ -62,7 +62,7 @@
 #include <algorithm>
 
 
-namespace aruco_cube
+namespace aruco_cube_ros
 {
 
 class ArucoCubeNodelet : public nodelet::Nodelet
@@ -90,11 +90,11 @@ class ArucoCubeNodelet : public nodelet::Nodelet
     bool publish_pose_;
 
     // Dynamic reconfigure
-    boost::shared_ptr<dynamic_reconfigure::Server<aruco_cube::ArucoCubeConfig> > dsrv_;
+    boost::shared_ptr<dynamic_reconfigure::Server<aruco_cube_ros::ArucoCubeConfig> > dsrv_;
     boost::recursive_mutex param_reconfigure_mutex_;
-    dynamic_reconfigure::Server<aruco_cube::ArucoCubeConfig>::CallbackType param_reconfigure_callback_;
+    dynamic_reconfigure::Server<aruco_cube_ros::ArucoCubeConfig>::CallbackType param_reconfigure_callback_;
     bool dynamic_reconfigure_initialized_;
-    aruco_cube::ArucoCubeConfig config_;
+    aruco_cube_ros::ArucoCubeConfig config_;
 
     std::string frame_id_, base_frame_id_;
     std::string parent_frame_id_, child_frame_id_;
@@ -126,10 +126,10 @@ class ArucoCubeNodelet : public nodelet::Nodelet
     void initDynamicReconfigure(ros::NodeHandle& n);
 
     /** \brief Callback function for dynamic reconfigure.*/
-    void reconfigureCB(aruco_cube::ArucoCubeConfig &config, uint32_t level);
+    void reconfigureCB(aruco_cube_ros::ArucoCubeConfig &config, uint32_t level);
 
     /** \brief Update dynamic reconfigure variables.*/
-    void updateDynamicReconfigure(aruco_cube::ArucoCubeConfig config);
+    void updateDynamicReconfigure(aruco_cube_ros::ArucoCubeConfig config);
 
     /** \brief Callback for camera info topic.*/
     void infoCB(const sensor_msgs::CameraInfoConstPtr& info_msg);
@@ -138,7 +138,7 @@ class ArucoCubeNodelet : public nodelet::Nodelet
     void imageCB(const sensor_msgs::ImageConstPtr& image_msg);
 
     /** \brief Service callback which returns the estimate pose of the aruco cube.*/
-    bool arucoServiceCB(aruco_cube::GetPoseRequest &req, aruco_cube::GetPoseResponse &res);
+    bool arucoServiceCB(aruco_cube_ros::GetPoseRequest &req, aruco_cube_ros::GetPoseResponse &res);
 
     /** \brief Finds aruco cube pose from a given image.*/
     bool findAruco(const sensor_msgs::ImageConstPtr& image_msg);
