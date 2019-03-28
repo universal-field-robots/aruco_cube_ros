@@ -1,0 +1,34 @@
+# Parameters for the aruco_cube_ros package
+image_topic: /model/stereo_bw/rgb/image_raw_color
+cam_info_topic: /model/stereo_bw/rgb/camera_info
+
+stream_image_topic: true
+display_opencv_window: true
+
+srv_topic: get_aruco_pose
+
+publish_pose: true
+pose_topic: aruco_cube_pose
+
+#transform parameters
+broadcast_transform: false
+parent_frame_id: base_link
+child_frame_id: aruco_cube_link
+
+window_size: 1   # filter window size
+cube_offsets: [0, 0, 0]
+covariance: [0, 0, 0, 0, 0, 0]
+
+#aruco marker parameters
+marker_side_length: 0.260       #m
+cube_side_length: 0.300         #m
+aruco_dictionary_id: 0
+marker_ids: [1, 2, 3, 4, 5]
+
+#Corner refinement parameters
+do_corner_refinement: true
+corner_refinement_win_size: 2
+corner_refinement_max_iterations: 50
+corner_refinement_min_accuracy: 0.9
+error_correction_rate: 0.35
+max_erroneous_bits_in_border_rate: 0.6

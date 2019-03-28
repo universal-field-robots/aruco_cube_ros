@@ -1,0 +1,4 @@
+# For getting pose of aruco cube
+---
+geometry_msgs/PoseWithCovarianceStamped aruco_pose
+bool success

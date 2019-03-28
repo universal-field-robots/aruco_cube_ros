@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+  <group ns="aruco_cube">
+
+    <!-- Load aruco_cube parameters-->
+    <rosparam file="$(find aruco_cube)/config/aruco_cube_params.yaml" ns="aruco_cube" command="load"/>
+
+    <!-- Launch aruco_cube_ros node -->
+    <node name="aruco_cube" pkg="aruco_cube_ros" type="aruco_cube" output="screen"/>
+
+  </group>
+
+</launch>

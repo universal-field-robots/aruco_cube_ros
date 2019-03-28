@@ -1,0 +1,7 @@
+<library path="lib/libaruco_cube_nodelet">
+  <class name="aruco_cube_ros/ArucoCubeNodelet"
+         type="aruco_cube_ros::ArucoCubeNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>Aruco cube pose estimator nodelet.</description>
+  </class>
+</library>

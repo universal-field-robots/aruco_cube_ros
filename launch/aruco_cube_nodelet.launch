@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+  <group ns="aruco_cube">
+
+    <arg name="manager_name"       value="aruco_manager" />
+
+    <!-- Load aruco_cube parameters-->
+    <rosparam file="$(find aruco_cube)/config/aruco_cube_params.yaml" ns="aruco_cube" command="load"/>
+
+    <!-- Launch nodelet manager -->
+    <node name="$(arg manager_name)" pkg="nodelet" type="nodelet" args="manager"  output="screen"/>
+
+    <!-- <load aruco_cube nodlet -->
+    <node name="aruco_cube" pkg="nodelet" type="nodelet" args="load aruco_cube/ArucoCubeNodelet $(arg manager_name)" output="screen"/>
+
+  </group>
+
+</launch>
