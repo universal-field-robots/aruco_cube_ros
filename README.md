@@ -3,14 +3,11 @@
 ## Overview
 ROS wrapper for 3D pose estimation of an Aruco Cube using openCV's [arcuo module](https://docs.opencv.org/3.2.0/d5/dae/tutorial_aruco_detection.html).
 
+The aruco_cube_ros package has been tested under [ROS] meldoic and Ubuntu 18.04. 
 
 ### License
 
-The source code is released under a [BSD 3-Clause license](aruco_cube_ros/LICENSE).
-
-The aruco_cube_ros package has been tested under [ROS] meldoic and Ubuntu 18.04. This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
-
-
+The source code is released under a [BSD 3-Clause license](LICENSE).
 
 ![Aruco cube detection example](doc/example.png)
 
