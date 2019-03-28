@@ -176,6 +176,4 @@ Determines 3D pose of aruco cube from a given image.
 
 ## Bugs & Feature Requests
 
-* Upload aruco marker pdf's
-
 Please report bugs and request features using the [Issue Tracker](https://github.com/universal-field-robots/aruco_cube_ros/issues).
