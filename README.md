@@ -1,7 +1,7 @@
 # aruco_cube_ros
 
 ## Overview
-ROS wrapper for 3D pose estimation of an Aruco Cube using openCV's [arcuo module](https://docs.opencv.org/3.2.0/d5/dae/tutorial_aruco_detection.html).
+ROS wrapper for 3D pose estimation of an Aruco Cube using openCV's (3.2) [arcuo module](https://docs.opencv.org/3.2.0/d5/dae/tutorial_aruco_detection.html).
 
 The aruco_cube_ros package has been tested under [ROS] meldoic and Ubuntu 18.04. 
 
@@ -173,7 +173,11 @@ Determines 3D pose of aruco cube from a given image.
 
   Max erroneous bits that can be in the detectd boarder of the aruco marker during the corner refinement method.
 
+#### Additional Notes
 
+If the paramater `window_size` is set to greater than 2, than a filtered result will be returned. Estimates of the aruco_cube pose are sampled using a moving window of size `window_size`. A gaussian distrubution is applied separately to both the position and orientation information of the poses in the winodw. Results outside of a single std-dev are discarded. The returned pose position and orientaiton is then selected separately based on the follow criteria:
+* position: Sample with the minimum sum of sqaure distance to all others positions.
+* orientation: sample with minimum sum of [angleShortestPath()](http://docs.ros.org/melodic/api/tf/html/c++/classtf_1_1Quaternion.html#ac3eb8b9304c93866fb45b7bb8cff696e) to all other orientations.
 ## Bugs & Feature Requests
 
 Please report bugs and request features using the [Issue Tracker](https://github.com/universal-field-robots/aruco_cube_ros/issues).
