@@ -177,7 +177,7 @@ Determines 3D pose of aruco cube from a given image.
 
 ##### Optional Filter
 
-If the paramater `window_size` is set to greater than 2, than a filtered result will be returned. Estimates of the aruco_cube pose are sampled using a moving window of size `window_size`. A gaussian distrubution is applied separately to both the position and orientation information of the poses in the winodw. Results outside of a single std-dev are discarded. The returned pose position and orientaiton is then selected separately based on the follow criteria:
+If the paramater `window_size` is set to greater than 2, than a filtered result will be returned. Estimates of the aruco_cube pose are sampled using a moving window of size `window_size`. A gaussian distrubution is applied separately to both the position and orientation information of the poses in the window. Results outside of a single std-dev are discarded. The returned position and orientaiton is then evalutated based on the follow criteria:
 * position: Sample with the minimum sum of sqaure distance to all others positions.
 * orientation: sample with minimum sum of [angleShortestPath()](http://docs.ros.org/melodic/api/tf/html/c++/classtf_1_1Quaternion.html#ac3eb8b9304c93866fb45b7bb8cff696e) to all other orientations.
 ## Bugs & Feature Requests
